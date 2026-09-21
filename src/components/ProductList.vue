@@ -6,7 +6,8 @@
         <select 
           id="category-select" 
           data-test="category-select"
-          v-model="categoriaSeleccionada"
+          :value="selectedCategory"
+          @change="onCategoryChange"
         >
           <option value="">Todas las categorías</option>
           <option v-for="cat in categorias" :key="cat" :value="cat">{{ cat }}</option>
@@ -42,55 +43,27 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import ProductCard from './ProductCard.vue';
 
 export default {
   name: 'ProductList',
   components: { ProductCard },
-  data() {
-    return {
-      productos: [],
-      categorias: [],
-      categoriaSeleccionada: '',
-      cargando: false,
-      error: null
-    };
-  },
   computed: {
-    productosFiltrados() {
-      if (!this.categoriaSeleccionada) return this.productos;
-      return this.productos.filter(p => p.categoria === this.categoriaSeleccionada);
-    }
+    //Mapeo de estados locales de los módulos con namespaced: true
+    ...mapState('products', ['categories', 'loading', 'error']),
+    ...mapState('filters', ['selectedCategory]),
+    ...mapGetters(['filteredProducts'])
   },
   created() {
-    // Hook created para la carga inicial de datos asíncronos
-    this.obtenerDatos();
+    this.fetchProducts();
   },
   methods: {
-    async obtenerDatos() {
-      this.cargando = true;
-      this.error = null;
-      try {
-        const [resProds, resCats] = await Promise.all([
-          axios.get('https://fakestoreapi.com/products'),
-          axios.get('https://fakestoreapi.com/products/categories')
-        ]);
+    ...mapActions('products', ['fetchProducts']),
+    ...mapActions('filters', ['updateCategory']),
 
-        this.productos = resProds.data.map(item => ({
-          id: item.id,
-          nombre: item.title,
-          categoria: item.category,
-          precio: Math.round(item.price * 950),
-          descripcion: item.description,
-          imagen: item.image
-        }));
-        this.categorias = resCats.data;
-      } catch (err) {
-        this.error = 'No fue posible conectar con el servidor de productos.';
-      } finally {
-        this.cargando = false;
-      }
+    onCategoryChange(event) {
+        this.updateCategory(event.target.value);
     }
   }
 };

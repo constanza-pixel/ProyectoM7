@@ -1,14 +1,22 @@
-import { createStore } from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import products from './modules/products';
+import filters from './modules/filters';
+import favorites from './modules/favorites';
 
-export default createStore({
-  state: {
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  modules: {
+    products,
+    filters,
+    favorites
   },
   getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+    filteredProducts: (state) => {
+      const list = state.products.selectedCategory;
+      if (!categoria) return list;
+        return list.filter(item.categoria === category);
+      }
+    }
+});
