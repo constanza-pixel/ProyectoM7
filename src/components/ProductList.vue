@@ -48,11 +48,13 @@ import ProductCard from './ProductCard.vue';
 
 export default {
   name: 'ProductList',
-  components: { ProductCard },
+  components: {
+     ProductCard 
+    },
   computed: {
     //Mapeo de estados locales de los módulos con namespaced: true
     ...mapState('products', ['categories', 'loading', 'error']),
-    ...mapState('filters', ['selectedCategory]),
+    ...mapState('filters', ['selectedCategory']),
     ...mapGetters(['filteredProducts'])
   },
   created() {
@@ -74,38 +76,38 @@ export default {
   max-width: 1100px;
   margin: 1.5rem auto;
   padding: 0 1rem;
-}
+};
 .toolbar {
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: flex-end;
-}
+};
 .filter-box label {
   margin-right: 0.5rem;
   font-weight: bold;
-}
+};
 .filter-box select {
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
   border: 1px solid #cbd5e1;
-}
+};
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5rem;
-}
+};
 .state-banner {
   text-align: center;
   padding: 3rem 1rem;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
-}
+};
 .state-banner.error {
   background: #fef2f2;
   color: #dc2626;
   border-color: #fecaca;
-}
+};
 .btn-retry {
   margin-top: 0.8rem;
   background: #dc2626;
