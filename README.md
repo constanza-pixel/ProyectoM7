@@ -56,3 +56,7 @@ En función del crecimiento futuro del catálogo planteado en la situación inic
 **-Nuxt.js:** Se justifica si el objetivo primordial del e-commerce requiere indexación pública y posicionamiento orgánico en motores de búsqueda mediante Server-Side Rendering (SSR) o generación estática (SSG).
 **-Quasar Framework:** Se justifica si la prioridad comercial es extender la aplicación hacia entornos móviles híbridos (iOS/Android vía Capacitor/Cordova) o clientes de escritorio (Electron) conservando una base de código única.
 
+###### Autor: Constanza Yañez
+####### Coautor: gemini ia
+
+
