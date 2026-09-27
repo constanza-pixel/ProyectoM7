@@ -28,8 +28,8 @@ export default {
       commit('SET_ERROR', null);
       try {
         const [resProds, resCats] = await Promise.all([
-          axios.get('https://fakestoreapi.com/products'),
-          axios.get('https://fakestoreapi.com/products/categories')
+          axios.get('http://localhost:3000/productos'),
+          axios.get('http://localhost:3000/categorias')
         ]);
 
         const productosFormateados = resProds.data.map(item => ({
@@ -41,10 +41,10 @@ export default {
           imagen: item.image
         }));
 
-        commit('SET_PRODUCTS', productosFormateados);
+        commit('SET_PRODUCTS', resProds.data);
         commit('SET_CATEGORIES', resCats.data);
       } catch (err) {
-        commit('SET_ERROR', 'Error de conexión al cargar la lista de productos desde la API.');
+        commit('SET_ERROR', 'Error al sincronizar con la API Mock local.');
       } finally {
         commit('SET_LOADING', false);
       }

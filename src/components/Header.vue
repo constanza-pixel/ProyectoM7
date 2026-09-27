@@ -1,29 +1,46 @@
 <template>
-  <header class="app-header">
-    <div class="logo">TechStore Showcase</div>
-    <nav>
-      <span>Catálogo Interactivo</span>
-    </nav>
-  </header>
+  <nav 
+    class="navbar px-4 shadow-sm border-bottom" 
+    :class="darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'"
+  >
+    <div class="container">
+      <span class="navbar-brand mb-0 h1 fw-bold">
+        TechStore Showcase
+      </span>
+      <button 
+        type="button" 
+        class="btn btn-sm"
+        :class="darkMode ? 'btn-outline-light' : 'btn-outline-dark'"
+        @click="$emit('toggle-theme')"
+      >
+        {{ darkMode ? ' Modo Claro' : ' Modo Oscuro' }}
+      </button>
+    </div>
+  </nav>
 </template>
 
 <script>
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  props: {
+    darkMode: {
+      type: Boolean,
+      default: false
+    }
+  }
 };
 </script>
 
 <style scoped>
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0f172a;
-  color: #ffffff;
-  padding: 1rem 2rem;
+.app-navbar {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-.logo {
-  font-weight: 700;
-  font-size: 1.2rem;
+.navbar-brand {
+  font-size: 1.25rem;
+  letter-spacing: -0.5px;
+}
+.btn {
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
 }
 </style>

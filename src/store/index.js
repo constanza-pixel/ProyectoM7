@@ -13,8 +13,8 @@ export default createStore({
     filteredProducts: (state) => {
       const list = state.products.items;
       const category = state.filters.selectedCategory;
-      if (!categoria) return list;
-        return list.filter(item.categoria === category);
-      }
+      if (!category) return list;
+      return list.filter(item => item.categoria === category);
     }
+  }
 });
