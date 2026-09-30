@@ -27,19 +27,22 @@ export default {
       commit('SET_LOADING', true);
       commit('SET_ERROR', null);
       try {
-        const [resProds, resCats] = await Promise.all([
-          axios.get('http://localhost:3000/productos'),
-          axios.get('http://localhost:3000/categorias')
-        ]);
+        const response = await axios.get(`${process.env.BASE_URL}db.json`);
 
-        const productosFormateados = resProds.data.map(item => ({
-          id: item.id,
-          nombre: item.title,
-          categoria: item.category,
-          precio: Math.round(item.price * 950),
-          descripcion: item.description,
-          imagen: item.image
-        }));
+        const rawProducts = response.data.productos || response.data;
+
+        const productosFormateados = rawProducts.map(item => ({
+        id: item.id,
+        nombre: item.nombre || item.title,
+        categoria: item.categoria || item.category,
+        precio: item.precio || item.price,
+        descripcion: item.descripcion || item.description,
+        imagen: item.imagen || item.image
+      }));
+
+        const categorias = response.data.categorias || [
+        ...new Set(productosFormateados.map(p => p.categoria))
+      ];
 
         commit('SET_PRODUCTS', resProds.data);
         commit('SET_CATEGORIES', resCats.data);
