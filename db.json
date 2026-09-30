@@ -1,0 +1,42 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Mochila Urbana Resistente",
+      "categoria": "Ropa y Accesorios",
+      "precio": 25000,
+      "descripcion": "Mochila impermeable ideal para uso diario y laptops de hasta 15 pulgadas.",
+      "imagen": "https://img.magnific.com/psd-gratis/elegante-mochila-moderna-negra_84443-87678.jpg?semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      "id": 2,
+      "nombre": "Camiseta Básica de Algodón",
+      "categoria": "Ropa de Hombre",
+      "precio": 12000,
+      "descripcion": "Camiseta de corte clásico 100% algodón suave y transpirable.",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqE4oidUMUqSzgyB0o9fK0MIDA_nPIW4ZwFsgInTEJWg&s=10"
+    },
+    {
+      "id": 3,
+      "nombre": "Disco Duro Externo 2TB",
+      "categoria": "Electrónica",
+      "precio": 65000,
+      "descripcion": "Almacenamiento portátil USB 3.0 de alta velocidad y compatibilidad universal.",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQREpcP7d_d87BImWiqSFES4kvP2Xu_LS-ZVD-T8IXytQ&s"
+    },
+    {
+      "id": 4,
+      "nombre": "Brazalete Dorado Elegante",
+      "categoria": "Joyería",
+      "precio": 45000,
+      "descripcion": "Brazalete con baño en oro de 18k y diseño minimalista.",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZrapZ1ebJy19ZHoXNaFaUYCGCOQItDDjQHGyIvOpwuw&s"
+    }
+  ],
+  "categorias": [
+    "Ropa y Accesorios",
+    "Ropa de Hombre",
+    "Electrónica",
+    "Joyería"
+  ]
+}
